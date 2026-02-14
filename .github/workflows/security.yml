@@ -1,0 +1,20 @@
+name: security scan
+on:
+  push: 
+    branches: [ main ]
+    paths:
+      - 'k8s/**'
+
+jobs:
+  security-scan-trivy:
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run Trivy vulnerability scanner in fs mode
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          trivy-config: 'k8s/**.yaml'
