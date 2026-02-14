@@ -16,5 +16,4 @@ jobs:
         uses: aquasecurity/trivy-action@0.33.1
         with:
           scan-type: 'fs'
-          scan-ref: '.'
-          trivy-config: 'k8s/**.yml'
+          scan-ref: 'k8s/**'
