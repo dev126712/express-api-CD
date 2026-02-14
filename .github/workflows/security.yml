@@ -17,4 +17,4 @@ jobs:
         with:
           scan-type: 'fs'
           scan-ref: '.'
-          trivy-config: 'k8s/**.yaml'
+          trivy-config: 'k8s/**.yml'
