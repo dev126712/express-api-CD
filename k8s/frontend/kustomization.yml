@@ -1,0 +1,6 @@
+resources:
+
+- configmap.yml
+- frontend-hpa.yml
+- frontend.yml
+- service.yml

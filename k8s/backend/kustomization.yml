@@ -1,0 +1,6 @@
+resources:
+
+- backend-hpa.yml
+- backend.yml
+- configmap.yml
+- service.yml
