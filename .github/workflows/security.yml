@@ -15,5 +15,5 @@ jobs:
       - name: Run Trivy vulnerability scanner in fs mode
         uses: aquasecurity/trivy-action@0.33.1
         with:
-          scan-type: 'fs'
-          scan-ref: 'k8s/**'
+          scan-type: 'repo'
+          scan-ref: 'k8s/'
