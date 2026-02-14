@@ -1,0 +1,30 @@
+name: K8s security scan
+on:
+  push: 
+    branches: [ main ]
+    paths:
+      - 'k8s/**'
+
+jobs:
+  security-scan-manifest-files:
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+    
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          scan-type: 'config'
+          scan-ref: './k8s'
+          severity: 'HIGH,CRITICAL'
+          exit-code: '1'
+          format: 'table,sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
