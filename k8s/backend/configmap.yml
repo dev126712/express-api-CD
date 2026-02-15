@@ -4,19 +4,7 @@ metadata:
   name: backend-config
   namespace: express-ns
 data:
-  DB_URI: ""
-  ARCJET_KEY: ""
   ARCJET_ENV: "production"
-  QSTASH_TOKEN: ""
-  QSTASH_URL: ""
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: backend-secrets
-  namespace: express-ns
-type: Opaque
-data:
-  DB_PASSWORD: bXlzZWNyZXRwYXNzd29yZA==
-  API_KEY: c3VwZXItc2VjcmV0LWFwaS1rZXk=
+  QSTASH_URL: "https://qstash.upstash.io"
+
 

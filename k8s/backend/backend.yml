@@ -23,12 +23,22 @@ spec:
         envFrom:
           - configMapRef:
               name: backend-config
-#        env:
-#          - name: DB_URI
-#            valueFrom:
-#              secretKeyRef:
-#                name: backend-secrets
-#                key: DB_PASSWORD
+        env:
+          - name: DB_URI
+            valueFrom:
+              secretKeyRef:
+                name: backend-secrets
+                key: DB_URI
+          - name: ARCJET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: backend-secrets
+                key: ARCJET_KEY
+          - name: QSTASH_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: backend-secrets
+                key: QSTASH_TOKEN # Mount logs to this path inside the container
         ports:
         - containerPort: 5500
         resources: # Prevents pod from crashing the node
@@ -53,4 +63,10 @@ spec:
           initialDelaySeconds: 20  # Increased to give Mongo time
           timeoutSeconds: 10       # Increased to 10s to avoid the 'deadline exceeded'
           periodSeconds: 10
-
+      
+      volume:
+        - name: backend-logs
+          emptyDir: {} # Temporary storage for logs, cleared on pod restart
+      volumeMounts:
+        - name: backend-logs
+          mountPath: /app/logs
