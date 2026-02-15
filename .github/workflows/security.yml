@@ -13,6 +13,9 @@ jobs:
       security-events: write
       actions: read
     steps:
+    
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Run Trivy (Table output for console)
         uses: aquasecurity/trivy-action@0.33.1
@@ -22,9 +25,6 @@ jobs:
           format: 'table'
           exit-code: '0'
           severity: 'HIGH,CRITICAL'
-    
-      - name: Checkout code
-        uses: actions/checkout@v4
         
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.33.1
