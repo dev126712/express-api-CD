@@ -24,8 +24,8 @@ jobs:
           scan-ref: './k8s'
           severity: 'HIGH,CRITICAL'
           exit-code: '1'
-          format: 'table'
-          output: 'trivy-results.table'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
 
       - name: Upload results to GitHub Security
         uses: github/codeql-action/upload-sarif@v3
