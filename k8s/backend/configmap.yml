@@ -4,7 +4,7 @@ metadata:
   name: backend-config
   namespace: express-ns
 data:
-  ARCJET_ENV: "production"
+  ARCJET_ENV: "development"
   QSTASH_URL: "https://qstash.upstash.io"
 
 

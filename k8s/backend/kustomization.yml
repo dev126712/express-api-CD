@@ -4,3 +4,4 @@ resources:
 - backend.yml
 - configmap.yml
 - service.yml
+- secrets.yml
