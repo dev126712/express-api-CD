@@ -20,6 +20,12 @@ spec:
       containers:
       - name: django
         image: dev126712/express-api:a04db5caa32693f19316d217b4ebecef1f7c1880
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true   # Fixes KSV0014
+          runAsNonRoot: true             # Fixes KSV0118 (Container level)
+          capabilities:
+            drop: ["ALL"]
         envFrom:
           - configMapRef:
               name: backend-config
@@ -63,10 +69,11 @@ spec:
           initialDelaySeconds: 20  # Increased to give Mongo time
           timeoutSeconds: 10       # Increased to 10s to avoid the 'deadline exceeded'
           periodSeconds: 10
-      
+        volumeMounts:
+          - name: backend-logs
+            mountPath: /app/logs
+
       volume:
         - name: backend-logs
           emptyDir: {} # Temporary storage for logs, cleared on pod restart
-      volumeMounts:
-        - name: backend-logs
-          mountPath: /app/logs
+        
