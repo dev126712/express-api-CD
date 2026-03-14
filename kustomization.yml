@@ -1,5 +1,5 @@
 resources:
 
-- namespace.yml
+# - namespace.yml
 - overlays/dev/
 
