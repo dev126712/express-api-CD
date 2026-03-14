@@ -1,6 +1,6 @@
 resources:
 
 - namespace.yml
-- overlays/backend/
-- overlays/frontend/
+- overlays/dev/backend/
+- overlays/dev/frontend/
 
