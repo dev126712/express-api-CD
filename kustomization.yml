@@ -1,6 +1,6 @@
 resources:
 
 - namespace.yml
-- backend/
-- frontend/
+- base/backend/
+- base/frontend/
 
