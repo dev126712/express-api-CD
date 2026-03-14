@@ -7,8 +7,8 @@ namePrefix: dev-
 
 labels:
   - pairs:
-    env: development
-  includeSelector: true
+      env: development
+    includeSelector: true
 
 replicas:
   - name: frontend
