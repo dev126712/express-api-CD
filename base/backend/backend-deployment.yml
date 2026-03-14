@@ -76,6 +76,6 @@ spec:
           - name: backend-logs
             mountPath: /app/logs
 
-      volume:
+      volumes:
         - name: backend-logs
           emptyDir: {} # Temporary storage for logs, cleared on pod restart
