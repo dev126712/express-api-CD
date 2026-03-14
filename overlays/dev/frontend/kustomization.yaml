@@ -5,8 +5,10 @@ resources:
 
 namePrefix: dev-
 
-commonLabels:
-  env: development
+labels:
+  - pairs:
+      env: development
+    includeSelectors: true
 
 replicas:
   - name: frontend
