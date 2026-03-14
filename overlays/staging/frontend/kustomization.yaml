@@ -7,9 +7,8 @@ namePrefix: stag-
 
 labels:
   - pairs:
-    #app: express-api
-    env: staging
-  includeSelector: true
+      env: staging
+    includeSelector: true
 
 replicas:
   - name: frontend
