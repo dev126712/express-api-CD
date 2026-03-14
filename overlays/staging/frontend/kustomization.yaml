@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../base/frontend
+
+namePrefix: stag-
+
+labels:
+  pairs:
+    #app: express-api
+    env: staging
+  includeSelector: true
+
+replicas:
+  - name: frontend
+    count: 3
+
+
+patches:
+- target:
+    kind: Deployment
+    name: frontend
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/resources
+      value:
+        requests:
+          memory: "256Mi"
+          cpu: "150m"
+        limits:
+          memory: "512Mi"
+          cpu: "300m"

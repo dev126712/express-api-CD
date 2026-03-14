@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../base/backend
+
+namePrefix: prod-
+
+labels:
+  pairs:
+    env: production
+  includeSelector: true
+
+
+replicas:
+  - name: backend
+    count: 4
+
+
+patches:
+- target:
+    kind: Deployment
+    name: backend
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/resources
+      value:
+        requests:
+          memory: "600Mi"
+          cpu: "300m"
+        limits:
+          memory: "1Gi"
+          cpu: "500m"
