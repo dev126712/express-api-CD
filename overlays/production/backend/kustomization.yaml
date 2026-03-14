@@ -7,8 +7,8 @@ namePrefix: prod-
 
 labels:
   - pairs:
-    env: production
-  includeSelector: true
+      env: production
+    includeSelector: true
 
 
 replicas:
