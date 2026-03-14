@@ -3,7 +3,7 @@ on:
   push: 
     branches: [ main ]
     paths:
-      - './'
+      - '.'
 
 jobs:
   security-scan-manifest-files:
@@ -21,7 +21,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.33.1
         with:
           scan-type: 'config'
-          scan-ref: './'
+          scan-ref: '.'
           format: 'table'
           exit-code: '0'
           severity: 'HIGH,CRITICAL'
