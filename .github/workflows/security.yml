@@ -2,6 +2,8 @@ name: K8s security scan
 on:
   push: 
     branches: [ main ]
+    paths:
+      - 'k8s/**'
 
 jobs:
   security-scan-manifest-files:
@@ -9,7 +11,9 @@ jobs:
     permissions:
       contents: read
       security-events: write
+      actions: read
     steps:
+    
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -17,11 +21,8 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'config'
-          # Scanning the root ensures all bases and overlays are checked
-          scan-ref: '.'
+          scan-ref: './k8s'
           format: 'table'
-          # '0' ensures the pipeline keeps going so you can deploy
           exit-code: '0'
           severity: 'HIGH,CRITICAL'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }} 
+    
