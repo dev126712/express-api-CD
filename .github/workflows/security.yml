@@ -1,3 +1,34 @@
+#name: K8s security scan
+#on:
+#  push: 
+#    branches: [ main ]
+#
+#jobs:
+#  security-scan-manifest-files:
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: read
+#      security-events: write
+#      actions: read
+#    steps:
+#    
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#
+ #     - name: Run Trivy
+ #       uses: aquasecurity/trivy-action@0.33.1
+ #       with:
+ #         scan-type: 'config'
+ #         scan-ref: '.'
+ #         format: 'table'
+ #         exit-code: '0'
+ #         severity: 'HIGH,CRITICAL'
+
+  #    - name: Upload Trivy scan results to GitHub Security tab
+  #      uses: github/codeql-action/upload-sarif@v3
+  #      with:
+  #        sarif_file: 'trivy-results.sarif'
+
 name: K8s security scan
 on:
   push: 
@@ -9,23 +40,19 @@ jobs:
     permissions:
       contents: read
       security-events: write
-      actions: read
     steps:
-    
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Trivy
+      - name: Run Trivy (Table output for console)
         uses: aquasecurity/trivy-action@0.33.1
         with:
           scan-type: 'config'
+          # Scanning the root ensures all bases and overlays are checked
           scan-ref: '.'
           format: 'table'
+          # '0' ensures the pipeline keeps going so you can deploy
           exit-code: '0'
           severity: 'HIGH,CRITICAL'
-
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: 'trivy-results.sarif'
-    
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }} 
