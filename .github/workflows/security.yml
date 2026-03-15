@@ -2,9 +2,7 @@ name: K8s security scan
 on:
   push: 
     branches: [ main ]
-    paths:
-      - 'k8s/**'
-
+    
 jobs:
   security-scan-manifest-files:
     runs-on: ubuntu-latest
@@ -21,7 +19,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'config'
-          scan-ref: './k8s'
+          scan-ref: '.'
           format: 'table'
           exit-code: '0'
           severity: 'HIGH,CRITICAL'
