@@ -2,8 +2,6 @@ name: K8s security scan
 on:
   push: 
     branches: [ main ]
-    paths:
-      - '.'
 
 jobs:
   security-scan-manifest-files:
