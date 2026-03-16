@@ -10,4 +10,3 @@ data:
   JWT_SECRET: "secret123"
   JWT_EXPIRES_IN: "3d"
   ARCJET_KEY: "ajkey_01k6jyd7w6f61r7y5ycg4r09jk"
-  ARCJET_ENV: "development"
