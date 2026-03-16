@@ -30,3 +30,11 @@ patches:
         limits:
           memory: "250Mi"
           cpu: "150m"
+
+configMapGenerator:
+- name: frontend-config
+  behavior: merge
+  literals:
+    - VITE_API_BASE_URL=http://dev-backend-service:5500
+    # Add the variable your Nginx template uses, for example:
+    - BACKEND_HOST=dev-backend-service
