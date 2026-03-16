@@ -34,7 +34,7 @@
 │       ├── frontend
 │       │   └── kustomization.yaml
 │       └── kustomization.yaml
-├── kustomization.yml (dev)
+├── kustomization.yml (overlays/dev/)
 ├── README.md
 └── root.yml
 ````
