@@ -4,6 +4,7 @@ resources:
 - ../../../base/frontend
 
 namePrefix: dev-
+namespace: dev
 
 labels:
   - pairs:
@@ -14,7 +15,15 @@ replicas:
   - name: frontend
     count: 1
 
-namespace: dev
+configMapGenerator:
+- name: frontend-config
+  behavior: merge
+  files:
+    - default.conf.template
+  literals:
+    - VITE_API_BASE_URL=http://dev-backend-service:5500
+    # Add the variable your Nginx template uses, for example:
+    - BACKEND_HOST=dev-backend-service
 
 patches:
 - target:
@@ -30,3 +39,4 @@ patches:
         limits:
           memory: "250Mi"
           cpu: "150m"
+
