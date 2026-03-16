@@ -21,7 +21,7 @@ spec:
         runAsUser: 1000
       containers:
       - name: backend
-        image: dev126712/express-api:dr8f9g9gg9f8f7dnmds2
+        image: dev126712/express-api:bd969f060ffbe76f57b5805e1187ac08544239a2
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
