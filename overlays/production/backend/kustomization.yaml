@@ -7,7 +7,7 @@ namePrefix: prod-
 
 labels:
   - pairs:
-      env: production
+      env: prod
     includeSelector: true
 
 
@@ -15,6 +15,7 @@ replicas:
   - name: backend
     count: 4
 
+namespace: prod
 
 patches:
 - target:

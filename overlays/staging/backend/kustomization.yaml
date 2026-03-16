@@ -14,6 +14,7 @@ replicas:
   - name: backend
     count: 3
 
+namespace: staging
 
 patches:
 - target:

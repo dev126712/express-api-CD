@@ -4,6 +4,4 @@ kind: Kustomization
 resources:
   - frontend/
   - backend/
-  - ../../namespace.yml 
 
-namespace: express-ns    
