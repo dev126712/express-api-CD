@@ -21,19 +21,22 @@
 │   │   │   └── kustomization.yaml
 │   │   ├── frontend
 │   │   │   └── kustomization.yaml
-│   │   └── kustomization.yaml
+│   │   ├── kustomization.yaml
+│   │   └── namespace.yml
 │   ├── production
 │   │   ├── backend
 │   │   │   └── kustomization.yaml
 │   │   ├── frontend
 │   │   │   └── kustomization.yaml
-│   │   └── kustomization.yaml
+│   │   ├── kustomization.yaml
+│   │   └── namespace.yml
 │   └── staging
 │       ├── backend
 │       │   └── kustomization.yaml
 │       ├── frontend
 │       │   └── kustomization.yaml
-│       └── kustomization.yaml
+│       ├── kustomization.yaml
+│       └── namespace.yml
 ├── kustomization.yml (overlays/dev/)
 ├── README.md
 └── root.yml
