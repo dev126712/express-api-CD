@@ -14,8 +14,7 @@
 │   │   ├── frontend-hpa.yml
 │   │   ├── frontend-service.yml
 │   │   └── kustomization.yaml
-│   ├── kustomization.yaml
-│   └── namespace.yml
+│   └── kustomization.yaml
 ├── kustomization.yml
 ├── overlays
 │   ├── dev
