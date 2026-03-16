@@ -15,7 +15,6 @@
 │   │   ├── frontend-service.yml
 │   │   └── kustomization.yaml
 │   └── kustomization.yaml
-├── kustomization.yml
 ├── overlays
 │   ├── dev
 │   │   ├── backend
@@ -35,6 +34,7 @@
 │       ├── frontend
 │       │   └── kustomization.yaml
 │       └── kustomization.yaml
+├── kustomization.yml (dev)
 ├── README.md
 └── root.yml
 ````
