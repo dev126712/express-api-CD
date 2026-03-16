@@ -19,7 +19,7 @@ configMapGenerator:
 - name: frontend-config
   behavior: merge
   files:
-    - default.conf.template=default.conf.template
+    - default.conf.template
   literals:
     - VITE_API_BASE_URL=http://dev-backend-service:5500
     # Add the variable your Nginx template uses, for example:
