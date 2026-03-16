@@ -40,6 +40,8 @@ spec:
           mountPath: /var/run
         - name: nginx-tmp
           mountPath: /tmp
+        - name: config-template
+          mountPath: /etc/nginx/templates  
       volumes:
       - name: nginx-cache
         emptyDir: {}
@@ -47,3 +49,7 @@ spec:
         emptyDir: {}
       - name: nginx-tmp
         emptyDir: {}
+      - name: config-template
+        configMap:
+          name: frontend-config  
+        
