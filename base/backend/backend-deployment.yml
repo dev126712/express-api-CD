@@ -19,7 +19,7 @@ spec:
       containers:
       - name: backend
         image: dev126712/express-api:8eddf3fa95abbae87bc450ab04a509aae04009c8
-        imagePullPolicy: true
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5500
         envFrom:

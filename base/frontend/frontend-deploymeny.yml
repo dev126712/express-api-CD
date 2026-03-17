@@ -19,7 +19,7 @@ spec:
       containers:
       - name: frontend
         image: dev126712/express-client:v4.0.7
-        imagePullPolicy: true
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
         envFrom:
