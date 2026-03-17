@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: frontend
 spec:
-  replicas: 2
+  replicas: 3
   strategy:
     rollingUpdate:
       maxSurge: 2
@@ -19,9 +19,9 @@ spec:
       containers:
       - name: frontend
         image: dev126712/express-client:v4.0.7
+        imagePullPolicy: true
         ports:
         - containerPort: 8080
-        imagePullPolicy: true
         envFrom:
         - configMapRef:
             name: frontend-config
@@ -34,10 +34,11 @@ spec:
             cpu: "500m"
         securityContext:
           runAsNonRoot: true
+          runAsUser: 1000
           allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
           capabilities:
-            drop:
-              - ALL
+            drop: ["ALL"]
         volumeMounts:
         - name: nginx-cache
           mountPath: /var/cache/nginx
@@ -49,6 +50,7 @@ spec:
           mountPath: /etc/nginx/templates
         - name: nginx-conf-d
           mountPath: /etc/nginx/conf.d  
+
       volumes:
       - name: nginx-cache
         emptyDir: {}

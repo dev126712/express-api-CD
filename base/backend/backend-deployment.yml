@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 3 # Increased for high availability
+  replicas: 3
   strategy:
     rollingUpdate:
       maxSurge: 2
@@ -19,16 +19,9 @@ spec:
       containers:
       - name: backend
         image: dev126712/express-api:8eddf3fa95abbae87bc450ab04a509aae04009c8
+        imagePullPolicy: true
         ports:
         - containerPort: 5500
-        imagePullPolicy: true
-        securityContext:
-          runAsNonRoot: true
-          runAsUser: 1000
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
-          capabilities:
-            drop: ["ALL"]
         envFrom:
           - configMapRef:
               name: backend-config
@@ -47,29 +40,36 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: backend-secrets
-                key: QSTASH_TOKEN # Mount logs to this path inside the container
-        resources: # Prevents pod from crashing the node
+                key: QSTASH_TOKEN 
+        resources: 
           requests:
             memory: "256Mi"
             cpu: "250m"
           limits:
             memory: "512Mi"
             cpu: "500m"
-        livenessProbe: # Restarts pod if it hangs
+        livenessProbe: 
           httpGet:
             path: /healthz
             port: 5500
           initialDelaySeconds: 15
-          timeoutSeconds: 5       # CRITICAL: Increases wait time from 1s to 5s
+          timeoutSeconds: 5       
           failureThreshold: 3
           periodSeconds: 20
-        readinessProbe: # Don't send traffic until DB is connected
+        readinessProbe: 
           httpGet:
             path: /readyz
             port: 5500
-          initialDelaySeconds: 20  # Increased to give Mongo time
-          timeoutSeconds: 10       # Increased to 10s to avoid the 'deadline exceeded'
+          initialDelaySeconds: 20  
+          timeoutSeconds: 10       
           periodSeconds: 10
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: ["ALL"]
         volumeMounts:
           - name: backend-logs
             mountPath: /app/logs
