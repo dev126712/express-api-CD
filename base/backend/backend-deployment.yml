@@ -6,8 +6,8 @@ spec:
   replicas: 3 # Increased for high availability
   strategy:
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
+      maxSurge: 2
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: backend
@@ -16,17 +16,17 @@ spec:
       labels:
         app: backend
     spec:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
       containers:
       - name: backend
         image: dev126712/express-api:8eddf3fa95abbae87bc450ab04a509aae04009c8
+        ports:
+        - containerPort: 5500
         imagePullPolicy: true
         securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
-          runAsNonRoot: true
           capabilities:
             drop: ["ALL"]
         envFrom:
@@ -48,8 +48,6 @@ spec:
               secretKeyRef:
                 name: backend-secrets
                 key: QSTASH_TOKEN # Mount logs to this path inside the container
-        ports:
-        - containerPort: 5500
         resources: # Prevents pod from crashing the node
           requests:
             memory: "256Mi"
