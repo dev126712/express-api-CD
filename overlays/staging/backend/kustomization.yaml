@@ -8,7 +8,7 @@ namePrefix: stag-
 labels:
   - pairs:
       env: staging
-    includeSelector: true
+    includeSelectors: true
 
 replicas:
   - name: backend
