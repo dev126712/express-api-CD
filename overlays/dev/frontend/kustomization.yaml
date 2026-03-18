@@ -13,7 +13,7 @@ labels:
 
 replicas:
   - name: frontend
-    count: 5
+    count: 1
 
 configMapGenerator:
 - name: frontend-config
