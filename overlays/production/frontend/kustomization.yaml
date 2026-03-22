@@ -13,7 +13,7 @@ labels:
 
 replicas:
   - name: frontend
-    count: 4
+    count: 3
 
 namespace: prod
 
