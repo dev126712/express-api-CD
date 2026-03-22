@@ -12,7 +12,7 @@ labels:
 
 replicas:
   - name: backend
-    count: 3
+    count: 2
 
 namespace: staging
 
