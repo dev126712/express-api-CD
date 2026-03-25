@@ -1,15 +1,4 @@
-
-## Advanced Kubernetes Orchestration & Package Management
-
-````Hybrid Configuration Strategy: ````Leveraged Helm to manage complex third-party cluster dependencies (ArgoCD, Ingress Controllers, Monitoring) while utilizing Kustomize for granular, environment-specific patches of internal microservices.
-
-````Environment Propagation: ````Engineered a Base/Overlay architecture with Kustomize to manage unique configurations for Dev, Staging, and Production, reducing manifest duplication by 70%.
-
-````Automated Scaling & Resilience:```` Defined Horizontal Pod Autoscalers (HPA) and sophisticated Liveness/Readiness probes to ensure application self-healing and dynamic scaling based on real-time CPU/Memory metrics.
-
-````GitOps Delivery:```` Integrated with ArgoCD to enforce a "Source of Truth" model, ensuring the cluster state automatically syncs with the Git repository.
-
-
+Kustomize structure:
 ````
 .
 ├── base
