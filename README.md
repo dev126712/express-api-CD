@@ -44,7 +44,7 @@ Kustomize structure:
 ````
 
 
-#### Security.yaml
+CI Pipeline (Security):
 
 ````
 
