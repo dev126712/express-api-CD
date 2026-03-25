@@ -44,7 +44,7 @@ Kustomize structure:
 ````
 
 
-CI Pipeline (Security):
+CI Pipeline (Security Trivy):
 
 ````
 
