@@ -1,5 +1,0 @@
-resources:
-
-- overlays/dev/
-- overlays/production/
-- overlays/staging/
