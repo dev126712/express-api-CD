@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/dev126712/express-api-CD.git
-    path: .
+    path: kustomization-prod
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
