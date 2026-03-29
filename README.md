@@ -4,6 +4,10 @@
 Kustomize structure:
 ````
 .
+├── argocd
+│   ├── argocd-dev.yml
+│   ├── argocd-prod.yml
+│   └── argocd-stage.yml
 ├── base
 │   ├── backend
 │   │   ├── backend-configmap.yml
@@ -19,11 +23,18 @@ Kustomize structure:
 │   │   ├── frontend-service.yml
 │   │   └── kustomization.yaml
 │   └── kustomization.yaml
+├── kustomization-dev
+│   └── kustomization.yml
+├── kustomization-prod
+│   └── kustomization.yml
+├── kustomization-stage
+│   └── kustomization.yml
 ├── overlays
 │   ├── dev
 │   │   ├── backend
 │   │   │   └── kustomization.yaml
 │   │   ├── frontend
+│   │   │   ├── default.conf.template
 │   │   │   └── kustomization.yaml
 │   │   ├── kustomization.yaml
 │   │   └── namespace.yml
@@ -41,8 +52,6 @@ Kustomize structure:
 │       │   └── kustomization.yaml
 │       ├── kustomization.yaml
 │       └── namespace.yml
-├── kustomization.yml (overlays/dev/)
 ├── README.md
-└── root.yml
 ````
 
