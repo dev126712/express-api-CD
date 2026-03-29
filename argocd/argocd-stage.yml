@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: express-api-app
+  name: express-api-app-stage
   namespace: argocd
 spec:
   project: default
