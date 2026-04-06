@@ -1,4 +1,6 @@
-# Three-Tier Architecture Deployment ( Kustomize ) With External Database
+# Three-Tier Architecture Deployment ( Kustomize & ArgoCD ) With External Database
+
+This repository provides a complete Kubernetes deployment setup for a three-tier web application with external Databae (Frontend, Backend, Database) using Kustomize and ArgoCD for GitOps-based continuous deployment. It supports multiple environments (Dev, Stage, Prod).
 
 ![alt text](https://github.com/dev126712/express-api-CD/blob/341a5c49ff3a99e73eed880e7d385d3715318225/Screenshot%202026-03-29%201.12.43%20PM.png)
 
